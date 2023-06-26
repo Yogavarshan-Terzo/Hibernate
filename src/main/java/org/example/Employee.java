@@ -7,7 +7,7 @@ public class Employee {
     @Id
     private int employeeId;
     private String name;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Department department;
     @ManyToOne
     private Role role;

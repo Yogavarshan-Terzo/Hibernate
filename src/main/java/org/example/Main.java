@@ -26,8 +26,8 @@ public class Main {
         Session  session = sf.openSession();
         Transaction transaction = session.beginTransaction();
 
-        Role role = session.get(Role.class,11);
-        role.setRoleName("Updated Role Name");
+        Employee employee = session.get(Employee.class,101);
+        session.delete(employee);
 
         transaction.commit();
         session.close();
