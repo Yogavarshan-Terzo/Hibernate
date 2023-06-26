@@ -1,22 +1,23 @@
 package org.example;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Employee {
     @Id
     private int employeeId;
     private String name;
-    private int deptId;
-    private int roleId;
+    @ManyToOne
+    private Department department;
+    @ManyToOne
+    private Role role;
     private int salary;
 
-    public Employee(int employeeId, String name, int deptId, int roleId, int salary) {
+    public Employee(int employeeId, String name, Department department, Role role, int salary) {
         this.employeeId = employeeId;
         this.name = name;
-        this.deptId = deptId;
-        this.roleId = roleId;
+        this.department = department;
+        this.role = role;
         this.salary = salary;
     }
 
@@ -40,20 +41,20 @@ public class Employee {
         this.name = name;
     }
 
-    public int getDeptId() {
-        return deptId;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setDeptId(int deptId) {
-        this.deptId = deptId;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
-    public int getRoleId() {
-        return roleId;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public int getSalary() {
@@ -69,8 +70,8 @@ public class Employee {
         return "Employee{" +
                 "employeeId=" + employeeId +
                 ", name='" + name + '\'' +
-                ", deptId=" + deptId +
-                ", roleId=" + roleId +
+                ", department=" + department +
+                ", role=" + role +
                 ", salary=" + salary +
                 '}';
     }

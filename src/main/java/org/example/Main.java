@@ -8,12 +8,15 @@ import org.practice.Laptop;
 import org.practice.Student;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
+
+        List<Employee> employeeList = new ArrayList<>();
 
         Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
         configuration.addAnnotatedClass(Employee.class);
@@ -22,22 +25,11 @@ public class Main {
         SessionFactory sf = configuration.buildSessionFactory();
         Session  session = sf.openSession();
         Transaction transaction = session.beginTransaction();
-        Query query = session.createQuery("from Employee ");
-        List<Employee> employeeList = query.list();
-        query = session.createQuery("from Department ");
-        List<Department> departmentList = query.list();
-        query = session.createQuery("from Role ");
-        List<Role> roleList = query.list();
+        Employee employee = session.get(Employee.class , 102);
+        Department department = session.get(Department.class,2);
+        employee.setDepartment(department);
+        session.update(employee);
         transaction.commit();
         session.close();
-        for(Employee employee : employeeList){
-            System.out.println(employee.toString());
-        }
-        for(Department dept : departmentList){
-            System.out.println(dept.toString());
-        }
-        for(Role role:roleList){
-            System.out.println(role.toString());
-        }
     }
 }
