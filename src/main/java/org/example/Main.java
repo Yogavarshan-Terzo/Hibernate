@@ -7,24 +7,27 @@ import org.hibernate.query.Query;
 import org.practice.Laptop;
 import org.practice.Student;
 
+import java.math.BigInteger;
+
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
 
-        Role role = new Role(10,"Developer");
-        Role role1 = new Role(11,"Analyst");
-        Role role2 = new Role(12,"Manager");
+        Employee employee = new Employee(100,"Yusvanth", 0,10, 40000);
+        Employee employee1 = new Employee(101,"Yogavarshan",1,11,30000);
+        Employee employee2 = new Employee(102,"Gokul",2,12,40000);
         Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
-        configuration.addAnnotatedClass(Role.class);
+        configuration.addAnnotatedClass(Employee.class);
 
         SessionFactory sf = configuration.buildSessionFactory();
         Session  session = sf.openSession();
         Transaction transaction = session.beginTransaction();
-        session.save(role);
-        session.save(role1);
-        session.save(role2);
+        session.save(employee);
+        session.save(employee1);
+        session.save(employee2);
         transaction.commit();
+        session.close();
         session.close();
     }
 }

@@ -3,8 +3,6 @@ package org.example;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
-import java.math.BigInteger;
-
 @Entity
 public class Employee {
     @Id
@@ -12,9 +10,9 @@ public class Employee {
     private String name;
     private int deptId;
     private int roleId;
-    private BigInteger salary;
+    private int salary;
 
-    public Employee(int employeeId, String name, int deptId, int roleId, BigInteger salary) {
+    public Employee(int employeeId, String name, int deptId, int roleId, int salary) {
         this.employeeId = employeeId;
         this.name = name;
         this.deptId = deptId;
@@ -54,11 +52,11 @@ public class Employee {
         this.roleId = roleId;
     }
 
-    public BigInteger getSalary() {
+    public int getSalary() {
         return salary;
     }
 
-    public void setSalary(BigInteger salary) {
+    public void setSalary(int salary) {
         this.salary = salary;
     }
 
