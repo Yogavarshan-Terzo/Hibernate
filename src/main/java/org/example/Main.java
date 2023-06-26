@@ -3,6 +3,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 import org.practice.Laptop;
 import org.practice.Student;
 
@@ -11,12 +12,15 @@ import org.practice.Student;
 public class Main {
     public static void main(String[] args) {
 
+
+
         Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
         configuration.addAnnotatedClass(Student.class);
 
         SessionFactory sf = configuration.buildSessionFactory();
         Session  session = sf.openSession();
-        Transaction transaction = session.beginTransaction();
+        Query query = session.createQuery("");
+                Transaction transaction = session.beginTransaction();
         transaction.commit();
     }
 }
