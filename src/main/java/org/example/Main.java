@@ -12,15 +12,15 @@ import org.practice.Student;
 public class Main {
     public static void main(String[] args) {
 
-
+        Department department = new Department(2,"PlatformsEngineer");
 
         Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
-        configuration.addAnnotatedClass(Student.class);
+        configuration.addAnnotatedClass(Department.class);
 
         SessionFactory sf = configuration.buildSessionFactory();
         Session  session = sf.openSession();
-        Query query = session.createQuery("");
-                Transaction transaction = session.beginTransaction();
+        Transaction transaction = session.beginTransaction();
+        session.save(department);
         transaction.commit();
     }
 }
