@@ -14,6 +14,10 @@ public class Department {
         this.deptName = deptName;
     }
 
+    public Department() {
+
+    }
+
     public int getDeptId() {
         return deptId;
     }

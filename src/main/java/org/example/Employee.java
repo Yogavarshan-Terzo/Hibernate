@@ -20,6 +20,10 @@ public class Employee {
         this.salary = salary;
     }
 
+    public Employee() {
+
+    }
+
     public int getEmployeeId() {
         return employeeId;
     }
