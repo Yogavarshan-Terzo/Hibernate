@@ -8,14 +8,18 @@ public class Employee {
     private int employeeId;
     private String name;
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "deptId")
     private Department department;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "roleId")
     private Role role;
     private int salary;
 
-    public Employee(int employeeId, String name,  int salary) {
+    public Employee(int employeeId, String name, Department department, Role role, int salary) {
         this.employeeId = employeeId;
         this.name = name;
+        this.department = department;
+        this.role = role;
         this.salary = salary;
     }
 

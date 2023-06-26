@@ -16,6 +16,13 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
+        List<Employee> employeeList = new ArrayList<>();
+        Department department = new Department(2,"Manager",employeeList);
+        Role role = new Role(13,"Junior",employeeList);
+        Employee employee = new Employee(101,"Gokul",department,role,5000);
+        employeeList.add(employee);
+        employee = new Employee(102,"Yogavarshan",department,role,4000);
+        employeeList.add(employee);
 
 
         Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
@@ -26,8 +33,9 @@ public class Main {
         Session  session = sf.openSession();
         Transaction transaction = session.beginTransaction();
 
-        Employee employee = session.get(Employee.class,101);
-        session.delete(employee);
+        for(Employee e : employeeList){
+            session.save(e);
+        }
 
         transaction.commit();
         session.close();
