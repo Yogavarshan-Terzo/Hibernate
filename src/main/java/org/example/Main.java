@@ -26,10 +26,8 @@ public class Main {
         Session  session = sf.openSession();
         Transaction transaction = session.beginTransaction();
 
-        Employee employee = session.get(Employee.class,102);
-        Department department = session.get(Department.class,3);
-
-        employee.setDepartment(department);
+        Role role = session.get(Role.class,11);
+        role.setRoleName("Updated Role Name");
 
         transaction.commit();
         session.close();
