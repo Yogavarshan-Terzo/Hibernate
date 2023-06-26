@@ -13,11 +13,9 @@ public class Employee {
     private Role role;
     private int salary;
 
-    public Employee(int employeeId, String name, Department department, Role role, int salary) {
+    public Employee(int employeeId, String name,  int salary) {
         this.employeeId = employeeId;
         this.name = name;
-        this.department = department;
-        this.role = role;
         this.salary = salary;
     }
 

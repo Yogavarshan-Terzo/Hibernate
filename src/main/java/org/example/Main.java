@@ -16,7 +16,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        List<Employee> employeeList = new ArrayList<>();
+        Department department = new Department(3,"Sales",null);
 
         Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
         configuration.addAnnotatedClass(Employee.class);
@@ -25,10 +25,9 @@ public class Main {
         SessionFactory sf = configuration.buildSessionFactory();
         Session  session = sf.openSession();
         Transaction transaction = session.beginTransaction();
-        Employee employee = session.get(Employee.class , 102);
-        Department department = session.get(Department.class,2);
-        employee.setDepartment(department);
-        session.update(employee);
+
+        session.save(department);
+
         transaction.commit();
         session.close();
     }

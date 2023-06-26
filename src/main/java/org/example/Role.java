@@ -13,7 +13,7 @@ public class Role {
     private int roleId;
     private String roleName;
     @OneToMany(mappedBy = "role")
-    private List<Employee> employeeList = new ArrayList<Employee>();
+    private List<Employee> employeeList;
     public Role(int roleId, String roleName,List<Employee> employeeList) {
         this.roleId = roleId;
         this.roleName = roleName;

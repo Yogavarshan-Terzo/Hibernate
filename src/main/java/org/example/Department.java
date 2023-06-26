@@ -13,7 +13,7 @@ public class Department {
     private int deptId;
     private String deptName;
     @OneToMany(mappedBy = "department")
-    private List<Employee> employeeList = new ArrayList<Employee>();
+    private List<Employee> employeeList;
     public Department(int deptId, String deptName, List<Employee> employeeList) {
         this.deptId = deptId;
         this.deptName = deptName;
