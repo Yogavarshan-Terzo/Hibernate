@@ -12,15 +12,19 @@ import org.practice.Student;
 public class Main {
     public static void main(String[] args) {
 
-        Department department = new Department(2,"PlatformsEngineer");
-
+        Role role = new Role(10,"Developer");
+        Role role1 = new Role(11,"Analyst");
+        Role role2 = new Role(12,"Manager");
         Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
-        configuration.addAnnotatedClass(Department.class);
+        configuration.addAnnotatedClass(Role.class);
 
         SessionFactory sf = configuration.buildSessionFactory();
         Session  session = sf.openSession();
         Transaction transaction = session.beginTransaction();
-        session.save(department);
+        session.save(role);
+        session.save(role1);
+        session.save(role2);
         transaction.commit();
+        session.close();
     }
 }
